@@ -16,7 +16,7 @@ gem 'puma', '~> 4.1'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'mysql2'
-
+gem 'dotenv-rails', groups: [:development, :test]
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -26,9 +26,16 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
 
+#Authentication gem
+gem 'devise'
+gem 'devise-jwt'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # Adds support for Capybara system testing and selenium driver
+  gem 'capybara', '>= 2.15'
+  gem 'selenium-webdriver'
 end
 
 group :development do
@@ -36,6 +43,9 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'rspec-rails', '~> 4.1', '>= 4.1.2'
+  gem 'rails-controller-testing'
+  gem 'rails_db', '~> 2.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
