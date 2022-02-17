@@ -4,4 +4,9 @@ Rails.application.routes.draw do
       sessions: 'users/sessions',
       registrations: 'users/registrations'
   }
+
+  scope 'api' do
+    resources 'movies'
+    resources 'casts'
+  end
 end

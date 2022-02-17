@@ -14,7 +14,7 @@ tbl & fields
         last_name
         stage_name
     
-    favorates
+    favorites
         user_id
         movie_id
     
@@ -28,12 +28,21 @@ tbl & fields
     
 
 relationships
-    movies - genres | many to many     (Pivot: movie_genre)
-    movies - casts | many to many       (Pivot: movie_cast)
+    movies - genres | many to many     (Pivot: genres_movies)
+    movies - casts | many to many       (Pivot: casts_movies)
     movie - favorites | one - many
     movie -reviews | one - many
     user - reviews | one - many
 
+==============================================================================================================
+TODO
+    CRUD
+        movies
+        genre
+    Pagecontroller
+==============================================================================================================
+REMINDER
+    add slug column to genre and movies tbl
 
 
 
