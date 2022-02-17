@@ -21,6 +21,11 @@ class CastsController < ApplicationController
     
     def create
         cast = Cast.new(cast_params)
+
+       if (params[:movie_id])
+            movie = Movie.find(params[:movie_id])
+            cast.movies << movie
+       end
     
         if cast.save
             render json: {

@@ -22,7 +22,10 @@ class MoviesController < ApplicationController
     
     def create
         movie = Movie.new(movie_params)
-    
+        cast = Cast.find(params[:cast_id])
+
+        movie.casts << cast
+
         if movie.save
             render json: {
                 status: 'SUCCESS',
