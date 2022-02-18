@@ -8,5 +8,7 @@ Rails.application.routes.draw do
   scope 'api' do
     resources 'movies'
     resources 'casts'
+    resources 'genres'
+    resources 'reviews'
   end
 end

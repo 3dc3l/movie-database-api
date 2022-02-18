@@ -2,27 +2,32 @@ class MoviesController < ApplicationController
 
     def index
         movies = Movie.order('created_at DESC');
-
         render json: movies
     end
     
     def show
-        movie = Movie.find(params[:id])
-        
+        movie = Movie.find_by_id(params[:id])
         render json: movie
     end
     
     def create
-
-        # render json: {cast: params[:cast_id]}
         movie = Movie.new(movie_params)
         #convert title to slug
         movie.slug = movie_params[:title].parameterize
+
         #add casts to movie
         if params[:cast_id]
             params[:cast_id].each do |cast|
                 existing_cast = Cast.find_by_id(cast)
                 movie.casts << existing_cast if existing_cast.present?
+            end
+        end
+
+        #add genre
+        if params[:genre_id]
+            params[:genre_id].each do |genre|
+                existing_genre = Genre.find_by_id(genre)
+                movie.genres << existing_genre if existing_genre.present?
             end
         end
         
@@ -38,17 +43,24 @@ class MoviesController < ApplicationController
     end
     
     def update
-        movie = Movie.find(params[:id])
+        movie = Movie.find_by_id(params[:id])
         #convert title to slug
         movie.slug = params[:title].parameterize
 
-        #remove existing casts
+        #remove existing casts and create new set
         movie.casts.clear
-        #add new set of casts to movie
         if params[:cast_id]
             params[:cast_id].each do |cast|
                 existing_cast = Cast.find_by_id(cast)
                 movie.casts << existing_cast if existing_cast.present?
+            end
+        end
+
+        #remove existing genre and create new set
+         if params[:genre_id]
+            params[:genre_id].each do |genre|
+                existing_genre = Genre.find_by_id(genre)
+                movie.genres << existing_genre if existing_genre.present?
             end
         end
 
@@ -64,16 +76,14 @@ class MoviesController < ApplicationController
     end
     
     def destroy
-        movie = Movie.find(params[:id])
-
+        movie = Movie.find_by_id(params[:id])
         movie.destroy
         
         render json: movie
     end
     
     private
-    
         def movie_params
-            params.permit(:id, :title, :release_year, :thumbnail_url, :slug, :image)
+            params.permit(:id, :title, :release_year, :thumbnail_url, :slug, :image, :cast_id, :genre_id)
         end
 end
