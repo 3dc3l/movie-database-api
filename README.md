@@ -36,13 +36,11 @@ relationships
 
 ==============================================================================================================
 TODO
-    CRUD
-        movies
-        genre
+    learn active storage and apply as an api
     Pagecontroller
 ==============================================================================================================
 REMINDER
-    add slug column to genre and movies tbl
+    
 
 
 

@@ -2,37 +2,20 @@ class CastsController < ApplicationController
     def index
         casts = Cast.order('created_at DESC');
     
-        render json: {
-            status: 'SUCCESS',
-            message: 'Loaded casts',
-            data: casts
-        }, status: :ok
+        render json: casts
     end
     
     def show
         cast = Cast.find(params[:id])
     
-        render json: {
-            status: 'SUCCESS',
-            message: 'Loaded cast',
-            data: cast
-        }, status: :ok
+        render json: cast
     end
     
     def create
         cast = Cast.new(cast_params)
 
-       if (params[:movie_id])
-            movie = Movie.find(params[:movie_id])
-            cast.movies << movie
-       end
-    
         if cast.save
-            render json: {
-                status: 'SUCCESS',
-                message: 'Saved cast',
-                data: cast
-            }, status: :ok
+            render json: cast
         else
             render json: {
                 status: 'ERROR',
@@ -46,11 +29,7 @@ class CastsController < ApplicationController
         cast = Cast.find(params[:id])
     
         if cast.update(cast_params)
-            render json: {
-                status: 'SUCCESS',
-                message: 'Updated cast',
-                data: cast
-            }, status: :ok
+            render json: cast
         else
             render json: {
                 status: 'ERROR',
@@ -64,15 +43,11 @@ class CastsController < ApplicationController
         cast = Cast.find(params[:id])
 
         cast.destroy
-        render json: {
-            status: 'SUCCESS',
-            message: 'Deleted cast',
-        }, status: :ok
-    end
-    
+        
+        render json: cast
     private
     
         def cast_params
-            params.permit(:first_name, :middle_name, :last_name, :suffix, :stage_name)
+            params.permit(:first_name, :middle_name, :last_name, :suffix, :stage_name, :image)
         end
 end
