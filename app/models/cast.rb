@@ -9,6 +9,9 @@ class Cast < ApplicationRecord
     validates :first_name, :middle_name, :last_name, :stage_name, :image, presence: true
 
     def get_image_url
-        url_for(self.image)
+        # url_for(self.image)
+        # polymorphic_url(self.image)
+        # self.image
+        rails_blob_path(self.image, disposition: "attachment", only_path: true)
     end
 end

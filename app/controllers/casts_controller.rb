@@ -13,7 +13,7 @@ class CastsController < ApplicationController
         cast = Cast.new(cast_params)
 
         if cast.save
-            render json: cast
+            render json: cast, status: :created
         else
             render json: {
                 status: 'ERROR',
