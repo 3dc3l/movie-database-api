@@ -5,6 +5,10 @@ Rails.application.routes.draw do
       registrations: 'users/registrations'
   }
 
+  devise_scope :user do
+    get 'users/current', to: 'sessions#show'
+  end
+
   scope 'api' do
     resources 'movies'
     resources 'casts'
