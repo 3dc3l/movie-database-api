@@ -48,6 +48,5 @@ RSpec.describe MoviesController, type: :request do
 			delete "/api/movies/#{movie.id}"
 			expect(response).to have_http_status(200)
 		end
-	end 
-
+	end
 end

@@ -13,7 +13,7 @@ class ReviewsController < ApplicationController
         review = Review.new(review_params)
 
         if review.save
-            render json: review
+            render json: review, status: :created
         else
             render json: {
                 status: 'ERROR',
