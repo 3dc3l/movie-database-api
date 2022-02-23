@@ -1,8 +1,18 @@
 require 'rails_helper'
 
-RSpec.describe "Casts", type: :request do
-  before :each do
-    @image = fixture_file_upload('support/test_image.png', 'image/png')
+RSpec.describe CastsController, type: :request do
+  let(:cast) { create(:cast) }
+  let(:create_url) { '/api/casts' }
+  let(:updated_url) { '/api/casts/53' }
+  let(:params) do 
+      {
+        first_name: cast.first_name,
+        middle_name: cast.middle_name,
+        last_name: cast.last_name,
+        stage_name: cast.stage_name,
+        stage_name: cast.stage_name,
+        image: fixture_file_upload(Rails.root.join('spec', 'support', 'test_image.png'), 'image/png')
+      }
   end
 
   describe "GET /index" do
@@ -13,19 +23,29 @@ RSpec.describe "Casts", type: :request do
   end
 
   describe "#create" do
-    it "creates a successful cast" do
-      # @cast =  Cast.create()
-      # @cast.should be_an_instance_of Cast
-      post '/api/casts', params: {first_name: "xency", suffix: "d", middle_name: "calzo", last_name: 'estadola', stage_name: 'naruto', image: @image} 
-      
+    before do
+      post create_url, params: params
+    end
+
+    it 'returns created' do
       expect(response).to have_http_status(:created)
     end
   end 
 
-  describe 'DELETE /casts/:id' do
-    it 'deletes a cast' do 
-      delete '/api/casts/25'
+  describe "#update" do
+    before do
+      put updated_url, params: params
+    end
+    it "update a successful cast" do
+      expect(response).to have_http_status(200)
+    end
+  end 
 
+  describe 'DELETE /casts/:id' do    
+    it 'deletes a cast' do 
+      cast.save
+
+      delete "/api/casts/#{cast.id}"
       expect(response).to have_http_status(200)
     end
   end 

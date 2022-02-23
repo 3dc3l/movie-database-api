@@ -43,6 +43,7 @@ group :development, :test do
   end
   gem 'shoulda-matchers', '~> 3.1', '>= 3.1.1'
   gem 'factory_bot_rails'
+  gem 'fabrication', '~> 2.27'
 end
 
 group :development do

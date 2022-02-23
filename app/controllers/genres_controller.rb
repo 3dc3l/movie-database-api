@@ -13,7 +13,7 @@ class GenresController < ApplicationController
         genre = Genre.new(genre_params)
 
         if genre.save
-            render json: genre
+            render json: genre, status: :created
         else
             render json: {
                 status: 'ERROR',

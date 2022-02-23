@@ -13,26 +13,26 @@ class MoviesController < ApplicationController
     def create
         movie = Movie.new(movie_params)
         #convert title to slug
-        movie.slug = movie_params[:title].parameterize
+        # movie.slug = movie_params[:title].parameterize
 
-        #add casts to movie
-        if params[:cast_id]
-            params[:cast_id].each do |cast|
-                existing_cast = Cast.find_by_id(cast)
-                movie.casts << existing_cast if existing_cast.present?
-            end
-        end
+        # #add casts to movie
+        # if params[:cast_id]
+        #     params[:cast_id].each do |cast|
+        #         existing_cast = Cast.find_by_id(cast)
+        #         movie.casts << existing_cast if existing_cast.present?
+        #     end
+        # end
 
-        #add genre
-        if params[:genre_id]
-            params[:genre_id].each do |genre|
-                existing_genre = Genre.find_by_id(genre)
-                movie.genres << existing_genre if existing_genre.present?
-            end
-        end
+        # #add genre
+        # if params[:genre_id]
+        #     params[:genre_id].each do |genre|
+        #         existing_genre = Genre.find_by_id(genre)
+        #         movie.genres << existing_genre if existing_genre.present?
+        #     end
+        # end
         
         if movie.save
-            render json: movie
+            render json: movie, status: :created
         else
             render json: {
                 status: 'ERROR',
