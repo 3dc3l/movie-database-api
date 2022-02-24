@@ -1,6 +1,3 @@
 class PageController < ApplicationController
-    def home
-        genre = Genre.all
-        render json: genre
-    end
+    #will use on other pages
 end
