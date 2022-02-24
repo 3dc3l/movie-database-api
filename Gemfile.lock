@@ -153,6 +153,9 @@ GEM
       activesupport (>= 5.0)
     i18n (1.10.0)
       concurrent-ruby (~> 1.0)
+    jbuilder (2.11.5)
+      actionview (>= 5.0.0)
+      activesupport (>= 5.0.0)
     jsonapi-renderer (0.2.2)
     jwt (2.3.0)
     listen (3.7.1)
@@ -257,6 +260,7 @@ DEPENDENCIES
   dotenv-rails
   fabrication (~> 2.27)
   factory_bot_rails
+  jbuilder (~> 2.7)
   listen (~> 3.2)
   mysql2
   puma (~> 4.1)

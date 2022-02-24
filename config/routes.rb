@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   }
 
   devise_scope :user do
-    get 'users/current', to: 'sessions#show'
+    get 'users/current', to: 'users#show'
   end
 
   scope 'api' do
