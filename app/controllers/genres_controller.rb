@@ -5,7 +5,7 @@ class GenresController < ApplicationController
     end
 
     def show
-        genre = Genre.find_by_id(params[:id])
+        genre = Genre.where(slug: params[:id]).first!
         render json: genre
     end
 
@@ -46,6 +46,6 @@ class GenresController < ApplicationController
 
     private
         def genre_params
-            params.permit(:title)
+            params.permit(:title, :slug)
         end
 end

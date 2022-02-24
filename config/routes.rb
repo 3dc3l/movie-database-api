@@ -14,5 +14,7 @@ Rails.application.routes.draw do
     resources 'casts'
     resources 'genres'
     resources 'reviews'
+    #Home page
+    get 'home', to: 'page#home'
   end
 end

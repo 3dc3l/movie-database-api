@@ -18,7 +18,7 @@ class Movie < ApplicationRecord
 
     #METHOD FOR DATA MANIPULATIONS
     def get_image_url
-        # url_for(self.image)
-        rails_blob_path(self.image, disposition: "attachment", only_path: true)
+        url_for(self.image)
+        # rails_blob_path(self.image, disposition: "attachment", only_path: true)
     end
 end
