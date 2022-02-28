@@ -12,4 +12,14 @@ class Cast < ApplicationRecord
         url_for(self.image)
         # rails_blob_path(self.image, disposition: "attachment", only_path: true)
     end
+    
+    def full_name
+        full_name = [first_name, middle_name, last_name].map(&:capitalize).join(", ")
+
+        if suffix
+           full_name =  [full_name, suffix.capitalize].join(", ")
+        else
+            full_name
+        end
+    end
 end
