@@ -1,7 +1,7 @@
 class GenresController < ApplicationController
     def index
         genres = Genre.order('created_at DESC');
-        render json: genres
+        render json: genres, include: ['movies', 'movies.users']
     end
 
     def show

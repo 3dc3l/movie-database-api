@@ -4,7 +4,7 @@ class MoviesController < ApplicationController
         movies = Movie.order('created_at DESC');
         render json: movies
     end
-    
+
     def show
         movie = Movie.where(slug: params[:id]).first!
         render json: movie

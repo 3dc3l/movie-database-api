@@ -5,7 +5,10 @@ class Movie < ApplicationRecord
     has_and_belongs_to_many :genres
     has_and_belongs_to_many :casts
     has_many :reviews
+    has_many :favorites
     has_many :users, through: :favorites
+
+    attr_accessor :is_favorite
 
     #ACTIVE STORAGE ATTACHMENT
     has_one_attached :image

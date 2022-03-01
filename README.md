@@ -48,6 +48,19 @@ REMINDER
     show user api if the token is valid
     
 
+add to favorites
+
+    ADD
+
+    click add fav
+        api call - user_id, movie_id
+
+        find favorite where user_id and movie_id
+            if exists
+                remove
+            else 
+                add
+
 
 
         

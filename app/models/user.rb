@@ -7,6 +7,7 @@ class User < ApplicationRecord
               :recoverable, :rememberable, :validatable
 
        #Models
+       has_many :favorites
        has_many :movies, through: :favorites
        has_many :reviews
 end

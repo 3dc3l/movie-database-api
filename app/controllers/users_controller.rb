@@ -3,10 +3,12 @@ class UsersController < ApplicationController
 
     def show
         user = get_user_from_token
-
+        favorite_movies = user.movies.all.distinct
+        
         render json: {
             message: "If you see this, you're in!",
-            user: user
+            user: user,
+            favorites: favorite_movies
         }
     end
 

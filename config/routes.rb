@@ -14,7 +14,10 @@ Rails.application.routes.draw do
     resources 'casts'
     resources 'genres'
     resources 'reviews'
-    #Home page
+    resources 'favorites'
+    #FrontEnd API
     get 'home', to: 'page#home'
+    get 'movie-list', to: 'page#movie_list'
+    post 'add-remove-favorite', to: 'page#add_remove_favorite'
   end
 end
