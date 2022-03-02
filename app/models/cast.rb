@@ -6,7 +6,7 @@ class Cast < ApplicationRecord
     has_one_attached :image
 
     #VALIDATIONS
-    validates :first_name, :middle_name, :last_name, :stage_name, :image, presence: true
+    validates :first_name, :middle_name, :last_name, :stage_name, presence: true
 
     def get_image_url
         url_for(self.image)

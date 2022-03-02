@@ -19,5 +19,10 @@ class PageController < ApplicationController
 
         render json: movies
     end
+    
+    def quick_search
+        movies = Movie.where("title LIKE ?", "%#{params[:query]}%")
 
+        render json: movies
+    end
 end

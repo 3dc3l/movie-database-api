@@ -17,7 +17,7 @@ class Movie < ApplicationRecord
     validates :title, :release_year, presence: true
     validates :title, uniqueness: true
     validates :release_year, numericality: { only_integer: true }
-    validates :image, { presence: true }
+    # validates :image, { presence: true }
 
     #METHOD FOR DATA MANIPULATIONS
     def get_image_url

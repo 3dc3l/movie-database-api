@@ -18,7 +18,7 @@ class FavoritesController < ApplicationController
         user = get_user_from_token
         favorite_movies = user.movies.all.distinct
 
-        render json: favorite_movies, include: ['image']
+        render json: favorite_movies, include: ['image', 'genres']
     end
 
     private

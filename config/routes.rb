@@ -19,5 +19,6 @@ Rails.application.routes.draw do
     get 'movie-list', to: 'page#movie_list'
     post 'add-remove-favorite', to: 'favorites#add_remove_favorite'
     get 'user-favorites', to: 'favorites#favorites'
+    post 'quick-search', to: 'page#quick_search'
   end
 end
