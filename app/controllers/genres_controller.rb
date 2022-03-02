@@ -6,7 +6,7 @@ class GenresController < ApplicationController
 
     def show
         genre = Genre.where(slug: params[:id]).first!
-        render json: genre
+        render json: genre, include: ['movies', 'movies.users']
     end
 
     def create

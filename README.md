@@ -61,6 +61,17 @@ add to favorites
             else 
                 add
 
+    get movies with favorite
+        params user_id
+            if user_id
+                find favorites by user_Id
+
+                    movies == test 
+
+
+        movies with favorites
+        favorites->user_id == this.$auth.user.id
+
 
 
         

@@ -20,16 +20,4 @@ class PageController < ApplicationController
         render json: movies
     end
 
-    def add_remove_favorite
-        user_id = params[:user_id]
-        movie_id = params[:movie_id]
-
-        favorite = Favorite.where(user_id: user_id, movie_id: movie_id).first
-
-        if favorite
-            
-        else
-
-        end
-    end
 end

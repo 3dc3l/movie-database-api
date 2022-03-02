@@ -7,8 +7,7 @@ class UsersController < ApplicationController
         
         render json: {
             message: "If you see this, you're in!",
-            user: user,
-            favorites: favorite_movies
+            user: user
         }
     end
 
