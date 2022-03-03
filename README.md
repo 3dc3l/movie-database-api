@@ -36,42 +36,17 @@ relationships
 
 ==============================================================================================================
 TODO
-    - frontend api
-        Pagecontroller
-    - frontend development
+    fix issue sa specific na movie review
+    refactor components
+    CMS
 ==============================================================================================================
 Done
     ALL API for CMS
 ===================================================================================================================
 REMINDER
-
-    show user api if the token is valid
-    
-
-add to favorites
-
-    ADD
-
-    click add fav
-        api call - user_id, movie_id
-
-        find favorite where user_id and movie_id
-            if exists
-                remove
-            else 
-                add
-
-    get movies with favorite
-        params user_id
-            if user_id
-                find favorites by user_Id
-
-                    movies == test 
-
-
-        movies with favorites
-        favorites->user_id == this.$auth.user.id
-
+    fix issue sa specific na movie review
+    refactor components
+    CMS
 
 
         

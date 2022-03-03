@@ -20,5 +20,6 @@ Rails.application.routes.draw do
     post 'add-remove-favorite', to: 'favorites#add_remove_favorite'
     get 'user-favorites', to: 'favorites#favorites'
     post 'quick-search', to: 'page#quick_search'
+    get 'movie-reviews', to: 'page#movie_reviews'
   end
 end
