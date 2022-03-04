@@ -30,7 +30,11 @@ gem 'rack-cors'
 gem 'devise'
 gem 'devise-jwt'
 
+#will remove 
 gem 'active_model_serializers', '~> 0.10.13'
+
+# Better gem for json api
+gem 'fast_jsonapi', '~> 1.5'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

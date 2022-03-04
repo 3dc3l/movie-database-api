@@ -2,11 +2,15 @@ class MoviesController < ApplicationController
 
     def index
         movies = Movie.order('created_at DESC');
-        render json: movies
+        options = {
+            include: [:genres, :casts]
+        }
+
+        render json: movies.to_json(options)
     end
 
     def show
-        movie = Movie.where(slug: params[:id]).first!
+        movie = Movie.where(slug: params[:id]).first
         render json: movie
     end
     

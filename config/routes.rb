@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get 'users/current', to: 'users#show'
+    post 'users/admin-login', to: 'users/sessions#admin_login'
   end
 
   scope 'api' do

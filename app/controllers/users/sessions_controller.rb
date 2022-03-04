@@ -5,6 +5,19 @@ class Users::SessionsController < Devise::SessionsController
         super { @token = current_token }
     end
 
+    def admin_login
+        user_email = params[:user][:email]
+        user = User.where(email: user_email).first
+
+        if user && user.is_admin == 1
+            
+        else
+            render json: {
+                data:  'not'
+            }
+        end
+    end
+
     def show
     end
 
