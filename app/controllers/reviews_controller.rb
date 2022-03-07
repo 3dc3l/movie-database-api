@@ -1,19 +1,20 @@
 class ReviewsController < ApplicationController
     def index
         reviews = Review.order('created_at DESC');
-        render json: reviews
+
+        render :json => reviews.to_json(:include => :users)
     end
     
     def show
         review = Review.find_by_id(params[:id])
-        render json: review
+        render :json => review.to_json(:include => :user)
     end
 
     def create
         review = Review.new(review_params)
 
         if review.save
-            render json: review, status: :created
+            render json: review.to_json, status: :created
         else
             render json: {
                 status: 'ERROR',
@@ -27,7 +28,7 @@ class ReviewsController < ApplicationController
         review = Review.find_by_id(params[:id])
 
         if review.update(review_params)
-            render json: review
+            render json: review.to_json
         else
             render json: {
                 status: 'ERROR',
@@ -41,7 +42,7 @@ class ReviewsController < ApplicationController
         review = Review.find_by_id(params[:id])
         review.destroy
 
-        render json: review
+        render json: review.to_json
     end
 
     private

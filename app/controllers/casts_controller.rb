@@ -1,19 +1,19 @@
 class CastsController < ApplicationController
     def index
         casts = Cast.order('created_at DESC');
-        render json: casts
+        render json: casts.to_json
     end
     
     def show
         cast = Cast.find_by_id(params[:id])
-        render json: cast
+        render json: cast.to_json 
     end
     
     def create
         cast = Cast.new(cast_params)
 
         if cast.save
-            render json: cast, status: :created
+            render json: cast.to_json, status: :created
         else
             render json: {
                 status: 'ERROR',
@@ -27,7 +27,7 @@ class CastsController < ApplicationController
         cast = Cast.find_by_id(params[:id])
     
         if cast.update(cast_params)
-            render json: cast
+            render json: cast.to_json
         else
             render json: {
                 status: 'ERROR',
@@ -41,7 +41,7 @@ class CastsController < ApplicationController
         cast = Cast.find_by_id(params[:id])
         cast.destroy
 
-        render json: cast
+        render json: cast.to_json
     end
 
     private

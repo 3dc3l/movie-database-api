@@ -2,16 +2,40 @@ class MoviesController < ApplicationController
 
     def index
         movies = Movie.order('created_at DESC');
+        
         options = {
-            include: [:genres, :casts]
+            :include => [ :genres, :casts],
+            :methods => :get_image_url
         }
 
-        render json: movies.to_json(options)
+        render :json => movies.to_json(options)
     end
 
     def show
-        movie = Movie.where(slug: params[:id]).first
-        render json: movie
+        movie = Movie.where(id: params[:id]).first
+
+        movie.genres.each do |item|
+            item.label = item.title
+        end
+
+        movie.casts.each do |item|
+            item.label = item.first_name + " " + item.middle_name + " " + item.last_name
+        end
+
+        options = {
+            :include => [ 
+                :users, 
+                :genres => {
+                    :methods => :label
+                }, 
+                :casts => {
+                    :methods => [:get_image_url, :label]
+                }
+            ],
+            :methods => [:get_image_url]
+        }
+        
+        render :json => movie.to_json(options)
     end
     
     def create
@@ -36,7 +60,7 @@ class MoviesController < ApplicationController
         end
         
         if movie.save
-            render json: movie, status: :created
+            render json: movie.to_json, status: :created
         else
             render json: {
                 status: 'ERROR',
@@ -69,7 +93,7 @@ class MoviesController < ApplicationController
         end
 
         if movie.update(movie_params)
-            render json: movie
+            render json: movie.to_json
         else
             render json: {
                 status: 'ERROR',
@@ -83,7 +107,7 @@ class MoviesController < ApplicationController
         movie = Movie.find_by_id(params[:id])
         movie.destroy
         
-        render json: movie
+        render json: movie.to_json
     end
     
     private

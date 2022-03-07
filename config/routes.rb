@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     resources 'casts'
     resources 'genres'
     resources 'reviews'
+    get 'genres-and-casts', to: 'page#genres_and_casts'
+    get 'movies-data', to: 'page#movie_by_slug'
+    
     #FrontEnd API
     get 'home', to: 'page#home'
     get 'movie-list', to: 'page#movie_list'

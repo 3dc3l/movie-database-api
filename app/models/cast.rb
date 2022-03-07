@@ -5,6 +5,8 @@ class Cast < ApplicationRecord
     has_and_belongs_to_many :movies
     has_one_attached :image
 
+    attr_accessor :label
+
     #VALIDATIONS
     validates :first_name, :middle_name, :last_name, :stage_name, presence: true
 

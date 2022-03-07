@@ -18,7 +18,12 @@ class FavoritesController < ApplicationController
         user = get_user_from_token
         favorite_movies = user.movies.all.distinct
 
-        render json: favorite_movies, include: ['image', 'genres']
+        options = {
+            :include => :genres,
+            :methods => :get_image_url
+        }
+
+        render :json => favorite_movies.to_json(options)
     end
 
     private
@@ -29,14 +34,14 @@ class FavoritesController < ApplicationController
         def remove_favorite(favorite)
             favorite.destroy
      
-            render json: favorite
+            render json: favorite.to_json
         end
 
         def add_favorite()
             favorite = Favorite.new(favorite_params)
     
             if favorite.save
-                render json: favorite, status: :created
+                render json: favorite.to_json
             else
                 render json: {
                     status: 'ERROR',
