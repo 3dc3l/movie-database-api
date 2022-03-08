@@ -1,6 +1,13 @@
 class UsersController < ApplicationController 
     before_action :authenticate_user!
 
+
+    def index
+        users = User.where(is_admin: 0 )
+
+        render :json => users.to_json
+    end
+
     def show
         user = get_user_from_token
         favorite_movies = user.movies.all.distinct

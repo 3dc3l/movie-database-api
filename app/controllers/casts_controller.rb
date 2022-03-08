@@ -6,7 +6,8 @@ class CastsController < ApplicationController
     
     def show
         cast = Cast.find_by_id(params[:id])
-        render json: cast.to_json 
+        
+        render :json => cast.to_json(:methods => [:get_image_url])
     end
     
     def create

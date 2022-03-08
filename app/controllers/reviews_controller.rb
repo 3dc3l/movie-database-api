@@ -2,12 +2,19 @@ class ReviewsController < ApplicationController
     def index
         reviews = Review.order('created_at DESC');
 
-        render :json => reviews.to_json(:include => :users)
+        options = {
+            :include => [ :movie, :user]
+        }
+
+        render :json => reviews.to_json(options)
     end
     
     def show
         review = Review.find_by_id(params[:id])
-        render :json => review.to_json(:include => :user)
+        options = {
+            :include => [ :movie, :user]
+        }
+        render :json => review.to_json(options)
     end
 
     def create
