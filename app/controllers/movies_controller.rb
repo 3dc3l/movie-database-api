@@ -84,6 +84,7 @@ class MoviesController < ApplicationController
             end
         end
 
+        movie.genres.clear
         #remove existing genre and create new set
          if params[:genre_id]
             params[:genre_id].each do |genre|
