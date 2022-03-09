@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
 
     def index
-        users = User.where(is_admin: 0 )
+        users = User.where(is_admin: 0 ).order('created_at DESC')
 
         render :json => users.to_json
     end
@@ -16,6 +16,13 @@ class UsersController < ApplicationController
             message: "If you see this, you're in!",
             user: user
         }
+    end
+
+    def destroy
+        user = User.find_by_id(params[:id])
+        user.destroy
+        
+        render json: user.to_json
     end
 
     private

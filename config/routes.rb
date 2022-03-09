@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'users/current', to: 'users#show'
     get 'users/all', to: 'users#index'
+    delete 'users/remove', to: 'users#destroy'
     post 'users/admin-login', to: 'users/sessions#admin_login'
   end
 
