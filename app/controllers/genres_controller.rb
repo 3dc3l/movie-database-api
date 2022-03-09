@@ -1,4 +1,6 @@
 class GenresController < ApplicationController
+    before_action :authenticate_admin!, only: [:create, :update, :destroy]
+
     def index
         genres = Genre.order('created_at DESC');
         render :json => genres.to_json(movies_with_users)

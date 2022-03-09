@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users,
-  controllers: {
+  devise_for :admins, controllers: {
+    sessions: 'admins/sessions',
+    registrations: 'admins/registrations'
+  }
+
+  devise_for :users, controllers: {
       sessions: 'users/sessions',
       registrations: 'users/registrations'
   }
@@ -10,6 +14,10 @@ Rails.application.routes.draw do
     get 'users/all', to: 'users#index'
     delete 'users/remove', to: 'users#destroy'
     post 'users/admin-login', to: 'users/sessions#admin_login'
+  end
+
+  devise_scope :admin do
+    get 'admins/current', to: 'admins#show'
   end
 
   scope 'api' do

@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-    
+    before_action :authenticate_user!
 
     def add_remove_favorite
         user_id = params[:user_id]

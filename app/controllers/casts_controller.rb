@@ -1,4 +1,6 @@
 class CastsController < ApplicationController
+    before_action :authenticate_admin!, only: [:create, :update, :destroy]
+
     def index
         casts = Cast.order('created_at DESC');
         render json: casts.to_json
