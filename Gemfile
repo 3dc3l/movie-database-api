@@ -33,6 +33,7 @@ gem 'devise-jwt'
 #will remove 
 gem 'active_model_serializers', '~> 0.10.13'
 
+gem 'unicorn', '~> 6.1'
 
 # Better gem for json api
 gem 'fast_jsonapi', '~> 1.5'
