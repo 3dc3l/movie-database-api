@@ -2,42 +2,23 @@ class CastsController < ApplicationController
     before_action :authenticate_admin!, only: [:create, :update, :destroy]
 
     def index
-        casts = Cast.order('created_at DESC');
-        render json: casts.to_json
+        casts = CastsFacade.new
+        render casts.all_casts
     end
     
     def show
-        cast = Cast.find_by_id(params[:id])
-        
-        render :json => cast.to_json(:methods => [:get_image_url])
+       cast = CastsFacade.new(params)
+       render cast.show
     end
     
     def create
-        cast = Cast.new(cast_params)
-
-        if cast.save
-            render json: cast.to_json, status: :created
-        else
-            render json: {
-                status: 'ERROR',
-                message: 'Cast not saved',
-                data: cast.errors
-            }, status: :unprocessable_entity
-        end
+        cast = CastsFacade.new(params, cast_params)
+        render cast.create
     end
     
     def update
-        cast = Cast.find_by_id(params[:id])
-    
-        if cast.update(cast_params)
-            render json: cast.to_json
-        else
-            render json: {
-                status: 'ERROR',
-                message: 'Cast not updated',
-                data: cast.errors
-            }, status: :unprocessable_entity
-        end
+        cast = CastsFacade.new(params, cast_params)
+        render cast.update
     end
     
     def destroy

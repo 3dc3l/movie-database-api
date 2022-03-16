@@ -8,9 +8,9 @@ class MoviesController < ApplicationController
     end
 
     def show
-        movies = MoviesFacade.new(params)
+        movie = MoviesFacade.new(params)
 
-        render movies.show
+        render movie.show
     end
     
     def create

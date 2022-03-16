@@ -5,7 +5,7 @@ class MoviesFacade
     def initialize(params = nil, movie_params = nil)
         @params = params
         @movie_params = movie_params
-      end
+    end
   
 
     def all_movies
