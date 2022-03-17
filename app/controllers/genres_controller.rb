@@ -1,5 +1,5 @@
 class GenresController < ApplicationController
-    before_action :authenticate_admin!, only: [:create, :update, :destroy]
+   # before_action :authenticate_admin!, only: [:create, :update, :destroy]
 
     def index
         genres = Genre.order('created_at DESC');

@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-    before_action :authenticate_user!
+   #before_action :authenticate_user!
 
     def add_remove_favorite
         favorite = FavoritesFacade.new

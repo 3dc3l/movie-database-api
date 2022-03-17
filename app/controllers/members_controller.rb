@@ -1,5 +1,5 @@
 class MembersController < ApplicationController 
-    before_action :authenticate_user!
+   # before_action :authenticate_user!
 
     def show
         user = get_user_from_token
