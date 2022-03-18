@@ -42,7 +42,7 @@ class FavoritesFacade
         end
 
         def get_user_from_token
-            jwt_payload = JWT.decode(request.headers['Authorization'].split(' ')[1], ENV['DEVISE_JWT_SECRET_KEY']).first
+            jwt_payload = JWT.decode(request.headers['Authorization'].split(' ')[1], "d52ef6ba1c804a5cfcbb00c3ad17103339209e8d64f46e4d98e173b0c2b4c3ace718dd7a31e43c6fa239592d29d10c7b5fdcf1f354eead1709285638e324d85c").first
             user_id = jwt_payload['sub']
             user = User.find(user_id.to_s)
         end
