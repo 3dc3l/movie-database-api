@@ -311,6 +311,7 @@ Devise.setup do |config|
   config.navigational_formats = []
   
   config.jwt do |jwt|
+    #jwt.secret = "3d7dba432fa780813d8dcc03be4504c87f6438da4093cbef98052a8c0f1dd4e986fd8cc39737f609ca6b706d5f725b7a88acea247072526b340a388d0de2e828"
     jwt.secret = ENV['DEVISE_JWT_SECRET_KEY']
     # jwt.secret = Rails.application.credentials.devise[:jwt_secret_key]
     jwt.dispatch_requests = [
