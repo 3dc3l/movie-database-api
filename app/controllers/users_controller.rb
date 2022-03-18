@@ -8,12 +8,12 @@ class UsersController < ApplicationController
     end
 
     def show
-        # user = get_user_from_token
-        # favorite_movies = user.movies.all.distinct
+        user = get_user_from_token
+        favorite_movies = user.movies.all.distinct
         
         render json: {
             message: "If you see this, you're in!",
-            user: get_user_from_token
+            user: user
         }
     end
 
@@ -26,9 +26,8 @@ class UsersController < ApplicationController
 
     private
         def get_user_from_token
-            ENV['DEVISE_JWT_SECRET_KEY']
-            # jwt_payload = JWT.decode(request.headers['Authorization'].split(' ')[1], ENV['DEVISE_JWT_SECRET_KEY']).first
-            # user_id = jwt_payload['sub']
-            # user = User.find(user_id.to_s)
+            jwt_payload = JWT.decode(request.headers['Authorization'].split(' ')[1], "8b07088fad6d639b701d2babf297c9429c3d210c18795424b505e5378697c3d11b11e18a09a02acfdd88ff3c1a9e27fb121462703da0c93c47b208326a101eb5").first
+            user_id = jwt_payload['sub']
+            user = User.find(user_id.to_s)
         end
 end
