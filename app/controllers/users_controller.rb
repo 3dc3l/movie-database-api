@@ -1,5 +1,9 @@
 class UsersController < ApplicationController 
+<<<<<<< HEAD
    # before_action :authenticate_user!, only: [:show]
+=======
+    # before_action :authenticate_user!, only: [:show]
+>>>>>>> d7e5c84e85fd7795fd01aed1954f4a347f808dba
 
     def index
         users = User.where(is_admin: 0 ).order('created_at DESC')
