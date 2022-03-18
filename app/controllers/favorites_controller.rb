@@ -2,7 +2,7 @@ class FavoritesController < ApplicationController
    #before_action :authenticate_user!
 
     def add_remove_favorite
-        favorite = FavoritesFacade.new
+        favorite = FavoritesFacade.new(favorite_params)
         render favorite.add_remove_favorite
     end
 
