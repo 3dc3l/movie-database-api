@@ -1,6 +1,5 @@
 class CastsController < ApplicationController
     # before_action :authenticate_admin!, only: [:create, :update, :destroy]
-
     def index
         casts = CastsFacade.new
         render casts.all_casts

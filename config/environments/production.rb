@@ -21,7 +21,8 @@ Rails.application.configure do
   # Apache or NGINX already handles this.
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
-
+  
+  Rails.application.routes.default_url_options = { host: "http://52.68.53.213" }
 
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
