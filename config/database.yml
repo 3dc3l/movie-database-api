@@ -9,7 +9,7 @@ default: &default
   database: movies_database
   host: localhost
   username: root
-  password: ""
+  password: "F!r33x!t!!!"
   encoding: utf8
 
 development:
