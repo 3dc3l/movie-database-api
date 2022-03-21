@@ -1,52 +1,6 @@
-tbl & fields
-    movies
-        title
-        release_year
-        thumbnail_url
-        genre (other)
-        casts (other)
-    genre
-        title
-
-    casts
-        first_name
-        middle_name
-        last_name
-        stage_name
-    
-    favorites
-        user_id
-        movie_id
-    
-    reviews
-        user_id (where is_admin == 0)
-        movie_id
-        content
-        star
-
-    users
-    
-
-relationships
-    movies - genres | many to many     (Pivot: genres_movies)
-    movies - casts | many to many       (Pivot: casts_movies)
-    movie - favorites | one - many
-    movie -reviews | one - many
-    user - reviews | one - many
-
-==============================================================================================================
-TODO
-    fix issue sa specific na movie review
-    refactor components
-    CMS
-==============================================================================================================
-Done
-    ALL API for CMS
-===================================================================================================================
-REMINDER
-    fix issue sa specific na movie review
-    refactor components
-    CMS
-
-
-        
+Reminder:   
+    manual chane of secret key every push:
+    devise.rb
+    user_controller
+    admin_controller
+    favorites_facade

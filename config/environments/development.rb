@@ -13,7 +13,7 @@ Rails.application.configure do
   config.consider_all_requests_local = true
 
   # Route for Image
-  Rails.application.routes.default_url_options = { host: "http://52.68.53.213" }
+  Rails.application.routes.default_url_options = { host: "http://localhost:3000" }
   # Rails.application.routes.default_url_options[:host] = 'localhost:3000'
 
   # Enable/disable caching. By default caching is disabled.
