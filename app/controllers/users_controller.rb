@@ -18,10 +18,18 @@ class UsersController < ApplicationController
     end
 
     def destroy
-        user = User.find_by_id(params[:id])
-        user.destroy
         
-        render json: user.to_json
+        user = User.find_by_id(params[:id])
+        # user.destroy
+
+
+        reviews = Review.where(user_id: params[:id]).order('created_at DESC')
+
+        reviews.each do |item| 
+            item.destroy
+        end
+        
+        render :json => user.to_json
     end
 
     private
