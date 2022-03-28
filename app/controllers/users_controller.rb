@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     def destroy
         
         user = User.find_by_id(params[:id])
-        # user.destroy
+        user.destroy
 
 
         reviews = Review.where(user_id: params[:id]).order('created_at DESC')
